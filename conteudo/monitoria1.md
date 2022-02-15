@@ -9,17 +9,16 @@
 			- [1.2.2 Instalar o compilador g++ via WSL](#122-instalar-o-compilador-g-via-wsl)
 	- [2. Revisão C++](#2-revisão-c)
 		- [2.1 Hello World](#21-hello-world)
-		- [2.2 Sintaxe](#22-sintaxe)
-		- [2.3 Include](#23-include)
-		- [2.4 Função main](#24-função-main)
-		- [2.5 Tipos de dados](#25-tipos-de-dados)
-		- [2.6 Funções](#26-funções)
-		- [2.7 Controle de fluxo](#27-controle-de-fluxo)
-			- [2.7.1 if/else](#271-ifelse)
-			- [2.7.2 for](#272-for)
-			- [2.7.3 While](#273-while)
-			- [2.7.4 Break, continue](#274-break-continue)
-		- [2.8 Strings e arrays](#28-strings-e-arrays)
+		- [2.2 Tipos de dados](#22-tipos-de-dados)
+			- [2.2.1 int, float](#221-int-float)
+			- [2.2.3 char](#223-char)
+			- [2.2.4 bool](#224-bool)
+		- [2.3 Funções](#23-funções)
+		- [2.4 Controle de fluxo](#24-controle-de-fluxo)
+			- [2.4.1 if/else](#241-ifelse)
+			- [2.4.2 for](#242-for)
+			- [2.4.3 While](#243-while)
+			- [2.4.4 Break, continue](#244-break-continue)
 
 ## 1. Configuração C++
 
@@ -102,16 +101,112 @@ Vamos entender o código por parte?
 - `return 0`: pulando agora para o final, essa linha indica que será retorna 0, um inteiro como definido no início da função. O valor 0 é escolhido para o sistema/usuário saber se o código foi capaz de ser completo, caso outro valor seja retornado, ocorreu um erro.
 - `std::cout`, `std::endl`: esses são comandos da biblioteca _iostream_, o primeiro passa a receber valores para exibir no terminal, e o segundo é um comando para terminar a linha. O `std::` indica que o comando está presente no _namespace_ std.
 - `<<` : é a sintaxe utilizada para "adicionar conteúdo" a uma _stream_, nesse caso a _stream_ é o `std::cout` que exibe o conteúdo no terminal.
+### 2.2 Tipos de dados
 
-### 2.2 Sintaxe
-### 2.3 Include
-### 2.4 Função main
-### 2.5 Tipos de dados
-### 2.6 Funções
-### 2.7 Controle de fluxo
+A linguagem C++ possui tipos de dados bases, os tipos mais utilizados são: _int_, _float_, _char_ e _bool_. 
+
+#### 2.2.1 int, float
+Como o próprio nome já diz, variáveis _int_ são para valores numéricos inteiros positivos ou negatives. Variáveis _float_ são para números "ponto flutuante", isso é, é uma representão na memória que permite amarzemanento de casas decimais. Observe o exemplo:
+
+```c
+int num1 = 1;
+float num2 = 1;
+float num3 = 3.1415;
+```
+
+Observe que os valores _num1_ e _num2_ são idênticos, o número 1. Mas se é possível representar qualquer inteiro como um _float_, para que eu usaria o tipo _int_? A vantagem é pois _float_ é uma aproximação de uma representação de um número real, e dessa forma, se é possível utilizar-se de um int, uma exatidão maior é obtida.
+Existem outros tipos de dados como o _int_ e o _float_ que representam valores maiores e dessa forma ocupam mais espaço na memória, respectivamente, o _long int_ e o _double_.
+Usando o pacote _limits_, é possível se verificar o limite superior desses tipos:
+
+```c
+#include <iostream>
+#include<limits>
+
+using namespace std;
+
+int main()
+{
+    cout << "Valor máximo int:" <<  numeric_limits<int>::max() << endl;
+    cout << "Valor máximo long int:" << numeric_limits<long int>::max() << endl;
+    cout << "Valor máximo float:" << numeric_limits<float>::max() << endl;
+    cout << "Valor máximo double:" << numeric_limits<double>::max() << endl;
+
+    return 0;
+}
+
+/*
+
+Valor máximo int:2147483647
+Valor máximo long int:9223372036854775807
+Valor máximo float:3.40282e+38
+Valor máximo double:1.79769e+308
+
+*/
+
+```
+
+#### 2.2.3 char
+
+O tipo _char_ é utilizado para representar caracteres ASCII, isso é, um total de 128 caracteres presentes na tabela ASCII, cada um representado por um número único. Observe o exemplo:
+
+```c
+
+char a1 = 'A';
+char a2 = 65;
+
+cout << (a1 == a2) << endl;
+
+```
+
+No exemplo acima, _a1_ e _a2_ são idênticos pois são o número referente ao caracter 'A' é 65.
+#### 2.2.4 bool
+Uma das mais simples, variáveis _bool_ podem assumir dois valores, verdadeiro ou falso. 
+
+```c
+bool b1 = true;
+bool b2 = false;
+bool b3 = (1 > 3);
+
+```
+
+Um _bool_ é o resultado de uma expressão com os operadores lógicos (>, <, &).
+
+### 2.3 Funções
+As funções no C++ são definidas fora do escopo _main_ da seguinte maneira:
+
+```c
+tipo nome_func(tipo param1, tipo param2){
+	Etapas funções
+	return;
+}
+```
+
+O _tipo_ é o tipo da variável que a função irá retornar, em caso que não vá retornar algo, esse tipo deve ser substituido por _void_, e o comando _return;_ deve estar presente vazio. Os parâmetros que a função recebe também devem ter o tipo definido anteriormente.
+
+```c
+int dobro(int num){
+	return 2*num;
+}
+
+void exibir_hello_world(){
+	cout << "Hello world" << endl;
+	return;
+}
+```
+
+Também é possível definir parâmetros com valores já pré-definidos utilizando um símbolo _=_ na declaração, observe o exemplo:
+
+```c
+void(int cod = 12345){
+	cout << "Hello world, student nº" << cod << endl;
+	return;
+}
+```
+
+### 2.4 Controle de fluxo
 O C++ também possui os controladores de fluxo comus: _if/else_, _for_, _while_. A sintaxe deles é bastante similar a usada no Javascript.
 
-#### 2.7.1 if/else
+#### 2.4.1 if/else
 
 ```c
 if(condition){
@@ -168,7 +263,7 @@ if(1 > 10 && 3/0) int i = 0;
 
 ```
 
-#### 2.7.2 for
+#### 2.4.2 for
 
 ```c
 for(initialization; condition; update){
@@ -201,7 +296,7 @@ for(int i = 0, int j = 10; i < j; i++, j--) continue;
 
 Um detalhe é que uma variável inicializada dentro de uma expressão for, só vai existir dentro do escopo desse for, e não fora dele.
 
-#### 2.7.3 While
+#### 2.4.3 While
 
 ```c
 while(condition){
@@ -216,7 +311,7 @@ while(i < 20){
 
 ```
 
-#### 2.7.4 Break, continue
+#### 2.4.4 Break, continue
 Os comandos _break_ e _continue_ são usados dentro de loops para interromper  as iterações (break) ou para pular para a próxima (continue). Podem ser usados tanto em for quanto em whiles.
 
 ```c
@@ -231,5 +326,3 @@ for(int i = 0; i < 10; i++){
 
 ```
 
-
-### 2.8 Strings e arrays
