@@ -41,7 +41,7 @@ nome_array[1] = nome_array[2]; //array se tornou {valor1, valor3, valor3}
 
 É importante compreender como os arrays __armazenam os valores na memória__, quando utilizamos uma expressão `int myarray[5]`, o que ocorre é que um bloco contínuo de 3 vezes 4 bytes (o espaço ocupado pelo `int`) é reservado para esse array em específico.
 
-![[Pasted image 20220216113827.png]]
+![[array_memoria.png]]
 
 ---
 
@@ -290,7 +290,7 @@ Espaço de memória de b: 0x7fff4624fb6c
 
 E o que faz um ponteiro? Parecido com a referência, o ponteiro cria uma nova forma de falar sobre o mesmo espaço de memória, porém ele salva esse valor em outro local.
 
-![[Pasted image 20220217094314.png]]
+![[ponteiro_memoria.png]]
 
 --- 
 
