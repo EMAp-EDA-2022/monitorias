@@ -248,7 +248,7 @@ Uma maneira mais curta ainda para problemas com 1 condição é o operador tern�
 ```c
 condition ? (expressão se a condition verdadeira) : (expressão se falsa)
 
-int num2 = num > 0 : 1000 ? -1000;
+int num2 = num > 0 ? 1000 : -1000;
 ```
 
 A condição dentro do _if_ é executada seguindo uma ordem (parentêses, da esquerda para direita), e caso não seja necessário executar tudo para saber se é verdade ou não, o C++ não executa, por exemplo:
