@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+
+using std::cout;
+using std::endl;
 
 /*
 Struct que vai representar um node. 
@@ -7,7 +9,7 @@ O stack vai ser uma sequência de nodes ligados.
 O node vai armazenar um valor do tipo T e um ponteiro para o próximo node.
 */
 template<class T>
-struct Node { 
+struct Node {
     T value;
     Node* next;
 
@@ -49,7 +51,7 @@ class Stack {
             size = 0;
         }
 
-        int GetSize(){
+        int GetSize() {
             return size;
         }
 
@@ -61,7 +63,7 @@ class Stack {
         //     root -> n1 -> n2 -> ... -> null
         // Após:
         //     root -> new -> n1 -> n2 -> ... -> null
-        void Insert(T value){
+        void Insert(T value) {
             Node<T> *pNew = new Node<T>(value);
             pNew->next = pRoot->next;
             pRoot->next = pNew;
@@ -70,7 +72,7 @@ class Stack {
 
         // Vai retornar o valor salvo no topo do stack
         T Top() {
-            if(pRoot->next == nullptr) return T();
+            if (pRoot->next == nullptr) return T();
             return pRoot->next->value;
         }
 
@@ -81,7 +83,7 @@ class Stack {
         // Após:
         //     root -> n2 -> ... -> null
         T Pop() {
-            if(size == 0) return T();
+            if (size == 0) return T();
             T val = pRoot->next->value;
             Node<T>* aux = pRoot->next;
             pRoot->next = pRoot->next->next;
@@ -93,7 +95,7 @@ class Stack {
         void Print() {
             Node<T>* pNode = pRoot;
             cout << "Stack: {";
-            while(pNode->next != nullptr){
+            while (pNode->next != nullptr){
                 cout << pNode->next->value << ", ";
                 pNode = pNode->next; 
                 // Essa sintaxe é para acessar uma função do objeto
@@ -105,7 +107,7 @@ class Stack {
 
 int main(){
     Stack<int> fila;
-    for(int i = 0; i < 5; i++){
+    for (int i = 0; i < 5; i++){
         fila.Insert(i);
         fila.Print();
     }
