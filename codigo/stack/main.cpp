@@ -20,7 +20,7 @@ struct Node {
     No caso, o constructor irá criar um node com um valor já definido.
     E o ponteiro para o próximo igual a nulo.
     */
-    Node(T x){
+    Node(T x) {
         value = x;
         next = nullptr;
     }
@@ -34,18 +34,18 @@ struct Node {
 };
 
 // Classe stack (pilha)
-// 
 template<class T>
 class Stack {
         Node<T>* pRoot;
         int size;
+
     public:
          /*
         Função "constructor" de um stack que inicializa sem nenhum valor.
         O que ela faz é definir o node inicial, uma "raíz".
         E o tamanho igual a 0.
         */
-        Stack(){
+        Stack() {
             pRoot = new Node<T>;
             pRoot->next = nullptr;
             size = 0;
@@ -87,7 +87,7 @@ class Stack {
             T val = pRoot->next->value;
             Node<T>* aux = pRoot->next;
             pRoot->next = pRoot->next->next;
-            delete aux; // Deletando a memória alocada dinamicamente
+            delete aux;  // Deletando a memória alocada dinamicamente
             size--;
             return val;
         }
@@ -95,19 +95,20 @@ class Stack {
         void Print() {
             Node<T>* pNode = pRoot;
             cout << "Stack: {";
-            while (pNode->next != nullptr){
+            while (pNode->next != nullptr) {
                 cout << pNode->next->value << ", ";
-                pNode = pNode->next; 
+                pNode = pNode->next;
                 // Essa sintaxe é para acessar uma função do objeto
-                // que está sendo apontado. Seria a mesma coisa de (*pNode).next;
+                // que está sendo apontado. 
+                // Seria a mesma coisa de (*pNode).next;
             }
             cout << "}\n";
         }
 };
 
-int main(){
+int main() {
     Stack<int> fila;
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < 5; i++) {
         fila.Insert(i);
         fila.Print();
     }
