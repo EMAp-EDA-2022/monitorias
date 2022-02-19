@@ -1,5 +1,4 @@
 #include<iostream>
-
 using namespace std;
 
 /*
@@ -54,19 +53,44 @@ class Stack {
             return size;
         }
 
+        // A função de inserção vai adicionar um novo elemento no
+        // topo do stack, em purrando todos os elementos para "trás"
+        // Então o novo nó vai ter como próximo o "próximo do root"
+        // E ele o novo nó vai ser o próximo do root
+        // Antes:
+        //     root -> n1 -> n2 -> ... -> null
+        // Após:
+        //     root -> new -> n1 -> n2 -> ... -> null
         void Insert(T value){
-            Node<T>* pNode = pRoot;
-            while(pNode->next != nullptr){
-                pNode = pNode->next; 
-                // Essa sintaxe é para acessar uma função do objeto
-                // que está sendo apontado. Seria a mesma coisa de (*pNode).next;
-            }
             Node<T> *pNew = new Node<T>(value);
-            pNode->next = pNew;
+            pNew->next = pRoot->next;
+            pRoot->next = pNew;
             size++;
         }
 
-        void Print(){
+        // Vai retornar o valor salvo no topo do stack
+        T Top() {
+            if(pRoot->next == nullptr) return T();
+            return pRoot->next->value;
+        }
+
+        // Vai retornar o valor salvo no topo do stack
+        // e remover o primeiro nó (que contém esse valor)
+        // Antes:
+        //     root -> n1 -> n2 -> ... -> null
+        // Após:
+        //     root -> n2 -> ... -> null
+        T Pop() {
+            if(size == 0) return T();
+            T val = pRoot->next->value;
+            Node<T>* aux = pRoot->next;
+            pRoot->next = pRoot->next->next;
+            delete aux; // Deletando a memória alocada dinamicamente
+            size--;
+            return val;
+        }
+
+        void Print() {
             Node<T>* pNode = pRoot;
             cout << "Stack: {";
             while(pNode->next != nullptr){
@@ -81,10 +105,15 @@ class Stack {
 
 int main(){
     Stack<int> fila;
-    cout << "Tamanho fila: " << fila.GetSize() << endl;
-    fila.Insert(1);
-    cout << "Tamanho fila: " << fila.GetSize() << endl;
-    fila.Insert(2);
+    for(int i = 0; i < 5; i++){
+        fila.Insert(i);
+        fila.Print();
+    }
+
+    cout << "Topo stack: " << fila.Top() << endl;
+    cout << "Pop stack: " << fila.Pop() << endl;
+    fila.Print();
+    cout << "Pop stack: " << fila.Pop() << endl;
     fila.Print();
     return 0;
 }
