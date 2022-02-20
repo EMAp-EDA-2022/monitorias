@@ -60,7 +60,7 @@ struct Node {
 // Classe stack (pilha)
 template<class T>
 class Stack {
-    Node<T>* pRoot;
+    Node<T>* ptr_root;
     int size;
 
  public:
@@ -70,8 +70,8 @@ class Stack {
     E o tamanho igual a 0.
     */
     Stack() {
-        pRoot = new Node<T>;
-        pRoot->next = nullptr;
+        ptr_root = new Node<T>;
+        ptr_root->next = nullptr;
         size = 0;
     }
 
@@ -88,16 +88,16 @@ class Stack {
     // Após:
     //     root -> new -> n1 -> n2 -> ... -> null
     void Insert(T value) {
-        Node<T> *pNew = new Node<T>(value);
-        pNew->next = pRoot->next;
-        pRoot->next = pNew;
+        Node<T> *ptr_new = new Node<T>(value);
+        ptr_new->next = ptr_root->next;
+        ptr_root->next = ptr_new;
         size++;
     }
 
     // Vai retornar o valor salvo no topo do stack
     T Top() {
-        if (pRoot->next == nullptr) return T();
-        return pRoot->next->value;
+        if (ptr_root->next == nullptr) return T();
+        return ptr_root->next->value;
     }
 
     // Vai retornar o valor salvo no topo do stack
@@ -108,39 +108,39 @@ class Stack {
     //     root -> n2 -> ... -> null
     T Pop() {
         if (size == 0) return T();
-        T val = pRoot->next->value;
-        Node<T>* aux = pRoot->next;
-        pRoot->next = pRoot->next->next;
+        T val = ptr_root->next->value;
+        Node<T>* aux = ptr_root->next;
+        ptr_root->next = ptr_root->next->next;
         delete aux;  // Deletando a memória alocada dinamicamente
         size--;
         return val;
     }
 
     void Print() {
-        Node<T>* pNode = pRoot;
+        Node<T>* ptr_node = ptr_root;
         cout << "Stack: {";
-        while (pNode->next != nullptr) {
-            cout << pNode->next->value << ", ";
-            pNode = pNode->next;
+        while (ptr_node->next != nullptr) {
+            cout << ptr_node->next->value << ", ";
+            ptr_node = ptr_node->next;
             // Essa sintaxe é para acessar uma função do objeto
             // que está sendo apontado.
-            // Seria a mesma coisa de (*pNode).next;
+            // Seria a mesma coisa de (*ptr_node).next;
         }
         cout << "}\n";
     }
 };
 
 int main() {
-    Stack<int> fila;
+    Stack<int> my_stack;
     for (int i = 0; i < 5; i++) {
-        fila.Insert(i);
-        fila.Print();
+        my_stack.Insert(i);
+        my_stack.Print();
     }
 
-    cout << "Topo stack: " << fila.Top() << endl;
-    cout << "Pop stack: " << fila.Pop() << endl;
-    fila.Print();
-    cout << "Pop stack: " << fila.Pop() << endl;
-    fila.Print();
+    cout << "Topo stack: " << my_stack.Top() << endl;
+    cout << "Pop stack: " << my_stack.Pop() << endl;
+    my_stack.Print();
+    cout << "Pop stack: " << my_stack.Pop() << endl;
+    my_stack.Print();
     return 0;
 }
