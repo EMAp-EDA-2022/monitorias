@@ -70,8 +70,7 @@ class Stack {
     E o tamanho igual a 0.
     */
     Stack() {
-        ptr_root = new Node<T>;
-        ptr_root->next = nullptr;
+        ptr_root = nullptr;
         size = 0;
     }
 
@@ -89,15 +88,19 @@ class Stack {
     //     root -> new -> n1 -> n2 -> ... -> null
     void Insert(T value) {
         Node<T> *ptr_new = new Node<T>(value);
-        ptr_new->next = ptr_root->next;
-        ptr_root->next = ptr_new;
         size++;
+        if (ptr_root == nullptr) {
+            ptr_root = ptr_new;
+            return;
+        }
+        ptr_new->next = ptr_root;
+        ptr_root = ptr_new;
     }
 
     // Vai retornar o valor salvo no topo do stack
     T Top() {
-        if (ptr_root->next == nullptr) return T();
-        return ptr_root->next->value;
+        if (ptr_root == nullptr) return T();
+        return ptr_root->value;
     }
 
     // Vai retornar o valor salvo no topo do stack
@@ -108,9 +111,9 @@ class Stack {
     //     root -> n2 -> ... -> null
     T Pop() {
         if (size == 0) return T();
-        T val = ptr_root->next->value;
-        Node<T>* aux = ptr_root->next;
-        ptr_root->next = ptr_root->next->next;
+        T val = ptr_root->value;
+        Node<T>* aux = ptr_root;
+        ptr_root = ptr_root->next;
         delete aux;  // Deletando a memória alocada dinamicamente
         size--;
         return val;
@@ -119,8 +122,8 @@ class Stack {
     void Print() {
         Node<T>* ptr_node = ptr_root;
         cout << "Stack: {";
-        while (ptr_node->next != nullptr) {
-            cout << ptr_node->next->value << ", ";
+        while (ptr_node != nullptr) {
+            cout << ptr_node->value << ", ";
             ptr_node = ptr_node->next;
             // Essa sintaxe é para acessar uma função do objeto
             // que está sendo apontado.
