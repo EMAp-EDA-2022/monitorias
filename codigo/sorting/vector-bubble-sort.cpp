@@ -39,7 +39,7 @@ desde que esse tipo suporte a operação de comparação.
 template<class T>
 void BubbleSortVector(vector<T>* ptr_vec) {
     bool changed = true;
-    // Caso passemos um loop inteiro sem fazer trocas, 
+    // Caso passemos um loop inteiro sem fazer trocas,
     // o vector já está ordenada
     while (changed) {
         changed = false;
@@ -69,8 +69,8 @@ void SortVector(vector<T>* ptr_vec) {
 template<class T>
 void Print(vector<T> vec) {
     cout << "vec.: {";
-    for(int i = 0; i < (vec.size() - 1); i++) {
-        cout << vec[i] << ", "; 
+    for (int i = 0; i < (vec.size() - 1); i++) {
+        cout << vec[i] << ", ";
     }
     cout << vec[vec.size() - 1] << "}" << endl;
 }
