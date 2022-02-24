@@ -42,6 +42,7 @@ void funcB(int x, int y) {
 	x + y;
 }
 
+
 ```
 
 O código dessa forma não vai ser compilado, porque quando a função `funcA` chamar `funcB`, a função `funcB` ainda não foi declarada e isso vai resultar em um erro. Uma solução seria declarar e depois definir:
@@ -65,7 +66,7 @@ void funcB(int x, int y) {
 
 Por esse motivo, é uma boa prática sempre declarar as funções para depois definir. E o mesmo ocorre para classes, o ideal é primeiro declarar as funções da classe e após fora do escopo definir elas.
 
-Uma recomendação é **declarar** as funções de uma classe em um arquivo *header* com extensão *.h*, e após isso, **definir** as funções em outro arquivo com extensão *.hpp*.
+Uma **recomendação** é **declarar** as funções de uma classe em um arquivo *header* com extensão *.h*, e após isso, **definir** as funções em outro arquivo com extensão *.hpp*.
 
 ### 1.2 Include guard
 
@@ -121,6 +122,7 @@ int myclass::funcB(int x, int y) {
 
 int main() {
 	myclass C;
+	C.funcB(1, 2);
 	return 0;
 }
 ```
