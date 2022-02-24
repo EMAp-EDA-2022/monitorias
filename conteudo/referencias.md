@@ -1,4 +1,4 @@
-# Referências
+# Referências (não aquelas com &)
 
 
 ### Arrays
@@ -24,3 +24,13 @@
 - [C++ Pointers (w3schools.com)](https://www.w3schools.com/cpp/cpp_pointers.asp)
 - [c++ - When to use references vs. pointers - Stack Overflow](https://stackoverflow.com/questions/7058339/when-to-use-references-vs-pointers)
 - [YouTube](https://www.youtube.com/watch?v=rtgwvkaYt1A)
+
+### Declarações e definições
+- [Declarations, Prototypes, Definitions, and Implementations](http://www.cplusplus.com/articles/yAqpX9L8/)
+
+### Headers
+- [Header - Microsoft Docs](https://docs.microsoft.com/pt-br/cpp/cpp/header-files-cpp?view=msvc-170)
+- [.h or .hpp in class definition](https://stackoverflow.com/questions/152555/h-or-hpp-for-your-class-definitions)
+
+### Queue
+- [Queue with linked list](https://www.geeksforgeeks.org/queue-linked-list-implementation/)

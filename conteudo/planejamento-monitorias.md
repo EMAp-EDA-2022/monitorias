@@ -6,17 +6,20 @@
 * Revisar funções, argumentos de funções e loops.
 
 ## Aula 2
-* Arrays e Strut.
-* Ponteiros (Teoria)
+* Arrays e vectors.
+* Ponteiros (Teoria).
 
 ## Aula 3
 
-* Ponteiros prática
+* Structs e classes.
+* Templates.
 * Dúvidas sobre a lista
 
 ## Aula 4
 
-* Classes 
+* Structs e classes.
+* Headers.
+* Dúvidas sobre lista.
 
 ## Aula 5
 
