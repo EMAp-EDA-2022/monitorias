@@ -34,3 +34,12 @@
 
 ### Queue
 - [Queue with linked list](https://www.geeksforgeeks.org/queue-linked-list-implementation/)
+
+### LinkedList
+- [Linked List](https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm)
+
+### BinaryTree
+- [Trees](https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm)
+- [BinaryTree](https://www.programiz.com/dsa/binary-search-tree)
+- [BinaryTree print function](https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c)
+
