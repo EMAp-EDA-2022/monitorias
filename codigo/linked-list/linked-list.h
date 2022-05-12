@@ -31,8 +31,10 @@ class LinkedList{
 
 };
 
+//  Constructors
 template<class T>
 LinkedList<T>::Node::Node(){
+    // This é um ponteiro para o objeto recem gerado (dentro do escopo)
     this->next = nullptr;
 }
 
@@ -44,8 +46,8 @@ LinkedList<T>::Node::Node(T data){
 
 template<class T>
 LinkedList<T>::LinkedList(){
+    // Criei o HEAD da linked list
     this->ptr_root = new Node();
-    
 }
 
 template<class T>
@@ -56,6 +58,7 @@ void LinkedList<T>::Insert(T data){
         ptr_cur = ptr_cur->next;
     }
 
+    // ptr_cur é o nó que vai ser anterior ao novo nó
     Node* ptr_new = new Node(data);
     ptr_new->next = ptr_cur->next;
     ptr_cur->next = ptr_new;
@@ -69,10 +72,11 @@ void LinkedList<T>::Delete(T data){
         ptr_cur = ptr_cur->next;
     }
 
+    // ptr_cur é o nó que é o anterior ao nó a ser removido
     // Se for o último joga um erro ou se o dado for diferente
-    if ((ptr_cur->next == nullptr) || (ptr_cur->next->data != data)) {
-        throw std::runtime_error("Value to remove not in list.");
-    }
+    //if ((ptr_cur->next == nullptr) || (ptr_cur->next->data != data)) {
+    //    throw std::runtime_error("Value to remove not in list.");
+    //}
 
     Node* aux = ptr_cur->next;
     ptr_cur->next = ptr_cur->next->next;
@@ -89,9 +93,6 @@ void LinkedList<T>::Print(){
     }
     cout << "]" << endl;
 }
-
-
-
 
 
 #endif //LINKED_LIST_H

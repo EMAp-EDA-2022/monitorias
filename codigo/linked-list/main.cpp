@@ -6,7 +6,7 @@ int main(){
     mylist.Insert(1);
     mylist.Insert(3);
     mylist.Print();
-    mylist.Delete(1);
+    mylist.Delete(4);
     mylist.Print();
     mylist.Delete(1);
 }

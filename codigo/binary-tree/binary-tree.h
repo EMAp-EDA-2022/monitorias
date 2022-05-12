@@ -15,7 +15,6 @@ class BinaryTree{
         Node* left;
         Node* right;
 
-
         Node();
 
         Node(T);
@@ -35,6 +34,7 @@ class BinaryTree{
     void Print();
 };
 
+// Constructors
 template<class T>
 BinaryTree<T>::Node::Node() {
     this->left = nullptr;
@@ -76,6 +76,9 @@ void BinaryTree<T>::InsertRecursion(T data, Node** ptr_node) {
         return;
     }
 
+    // ptr_node == Node**
+    // *ptr_node == Node*
+    // **ptr_node == Node 
     if (data < (*ptr_node)->data){
         InsertRecursion(data, &((*ptr_node)->left));
     } else {
@@ -100,7 +103,5 @@ void BinaryTree<T>::PrintNode(string prefix, Node* ptr_node, bool isLeft) {
         PrintNode( prefix + (isLeft ? "│   " : "    "), ptr_node->right, false);
     }
 }
-
-
 
 #endif //BINARY_TREE_H

@@ -2,14 +2,12 @@
 
 int main(){
     BinaryTree<int> tree;
-    tree.Insert(27);
-    tree.Insert(14);
-    tree.Insert(35);
-    tree.Print();
-    tree.Insert(10);
-    tree.Insert(19);
-    tree.Print();
-    tree.Insert(31);
-    tree.Insert(42);
+    tree.Insert(1012312);
+    tree.Insert(14123123);
+    tree.Insert(19123123);
+    tree.Insert(27123132);
+    tree.Insert(31123123);
+    tree.Insert(35123);
+    tree.Insert(426356);
     tree.Print();
 }
