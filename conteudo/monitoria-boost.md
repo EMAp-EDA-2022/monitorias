@@ -6,7 +6,7 @@ Eu nunca consegui instalar utilizando o *Windows* (usando o Prompt de Comando). 
 Vocês terão que "conhecer bem" como funciona o sistema de instalação do *Ubuntu*, lidar com arquivos, etc. Uma maneira ideal é ter algum integrante do grupo que tenha mais conhecimento nisso.
 
 ## Instalar Boost
-Eu vou tentar passar instruções gerais aqui de como eu consegui isntalar o *Boost*.
+Eu vou tentar passar instruções gerais aqui de como eu consegui instalar o *Boost*.
 
 Eu comecei seguindo esse tutorial: https://cosmiccoding.com.au/tutorials/boost
 
@@ -66,11 +66,11 @@ which python3.8
 No meu caso retornou "`/usr/bin/python3.8`". Agora vamos voltar a lidar com *Boost*. Rode o seguinte comando (dentro da pasta que o *Boost* foi extraído) dentro da pasta `boost_1_73_0`:
 
 ```shell
-./bootstrap.sh --with-python=[local-de-instalação-do-python] --with-python-version=[versão-do-python] --with-python-root=[local-de-instalação-do-python-versão-específica]
+./bootstrap.sh --with-python=[local-de-instalação-do-python] --with-python-version=[versão-do-python] --with-python-root=[local-das-bibliotecas-do-python-versão-específica]
 ```
 
 
-Você deve substituir os campos `[local-de-instalação-do-python]`, `[versão-do-python]` e `[local-de-instalação-do-python-versão-específica]`. No meu caso, ficou assim:
+Você deve substituir os campos `[local-de-instalação-do-python]`, `[versão-do-python]`  e `[local-das-bibliotecas-do-python-versão-específica]`, esse é o resultado do comando `which python3`, trocando o `bin` por `lib`. No meu caso, ficou assim:
 
 ```shell
 ./bootstrap.sh --with-python=/usr/bin/python3 --with-python-version=3.8 --with-python-root=/usr/lib/python3.8
@@ -120,7 +120,7 @@ Vamos compilar esse arquivo "`wrap.cpp`". O comando de compilação é bastante 
 g++ -Wall -Wextra -fPIC -shared -I[local-de-instalação-do-python-versão-específica] -I[local-do-include-de-python-versão-específica] wrap.cpp -o hello_ext.so -lboost_python[versao-do-python-sem-ponto] -lboost_numpy[versao-do-python-sem-ponto]
 ```
 
-São vários campos que devem ser substituídos. `[local-de-instalação-do-python-versão-específica]` a mesma coisa de anteriormente, a localização obtida quando pesquisamos `which python[versão]`. `[local-do-include-de python-versão-específica]` essa opção eu tive que adicionar pois o código estava dando um erro, não consegui encontrar a biblioteca "`pyconfig.h`". Provavelmente seja o mesmo endereço que `[local-de-instalação-do-python-versão-específica]`, trocando `lib` por `include`. `[versao-do-python-sem-ponto]` deve ser o número da versão do Python sem o ponto, por exemplo, versão 3.8 vira 38.
+São vários campos que devem ser substituídos. `[local-das-bibliotecas-do-python-versão-específica]` a mesma coisa de anteriormente, a localização obtida quando pesquisamos `which python[versão]` trocando `bin` por `lib`. `[local-do-include-de python-versão-específica]` essa opção eu tive que adicionar pois o código estava dando um erro, não consegui encontrar a biblioteca "`pyconfig.h`". É o mesmo endereço do resultado de `which python[versão]` trocando `lib` por `include`. `[versao-do-python-sem-ponto]` deve ser o número da versão do Python sem o ponto, por exemplo, versão 3.8 vira 38.
 
 No meu caso, o comando de instalação será assim:
 
