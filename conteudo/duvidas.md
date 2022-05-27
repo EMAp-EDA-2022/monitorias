@@ -26,3 +26,7 @@ A R-Tree não é uma estrutura com muitos textos básicos disponíveis online. U
 > O que o `insert` receberia?
 
 Na nossa implementação, a função `insert` vai receber um ponto (de duas coordenadas) e possívelmente algum valor extra. Com esse ponto, nós vamos percorrer a árvore até chegar em uma folha, cada folha representa um retângulos (todos nós representam retângulos). Pode ser que encontremos uma folha com um retângulo que contém o ponto, mas pode ser também que o ponto não esteja dentro de nenhum retângulo. No primeiro caso, adicionamos o filho, no segundo caso, precisamos aumentar o retângulo de alguma folha para "caber" o ponto.
+
+> As árvores R possuem um parâmetro M, que regula o número mínimo e máximo de itens em cada nó. Eu devo manter fixo esse valor?
+
+O adequado é fazer uma implementação que seja facilmente possível para alterar esse valor M, talvez seja interessante análisar o impacto desse valor M no uso de memória e tempo computacional. No entanto, não é necessário que o usuário final do DataFrame escolha esse valor M, você deve deixar um valor fixo interno mesmo.
