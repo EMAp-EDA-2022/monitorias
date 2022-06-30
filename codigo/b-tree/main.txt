@@ -1,0 +1,15 @@
+The inorder B-tree is:  8 9 10 11 15 16 17 18 20 23
+The preorder B-tree is:  10 16 8 9 11 15 17 18 20 23
+The postorder B-tree is:  8 9 11 15 17 18 20 23 10 16
+The inorder B-tree is:  8 9 10 11 15 16 17 18 23
+The preorder B-tree is:  10 16 8 9 11 15 17 18 23
+The postorder B-tree is:  8 9 11 15 17 18 23 10 16
+The depth of the tree is:1
+1-smallest element: 8
+4-smallest element: 11
+3-biggest element: 17
+Sucessor of 19 : 23
+Precessor of 12 : 11
+Search inside interval (11, 22): 15 16 17 18 
+Search for 5 closest of 14: 10 11 15 16 17 
+Search for 4 closest of interval (10, 17): 8 9 18 23 
