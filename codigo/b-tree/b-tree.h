@@ -84,15 +84,15 @@ class BTree {
     
     // Função que retorna a profundidade da árvore (número de níveis)
     int depth();
-    
+   
     // Função de pesquisar por todas as chaves dentro de um intervalo [x, y]
-    vector<BTreeNode> interval_search(int x, int y);
+    vector<int> interval_search(int x, int y);
 
     // Função de encontrar as k chaves mais próximas de um valor m 
-    vector<BTreeNode> k_closest(int m);
+    vector<int> k_closest(int k, int m);
 
     //Função de encontrar as k chaves mais próximas de um intervalo (x, y)
-    vector<BTreeNode> k_closest_interval(int x, int y);
+    vector<int> k_closest_interval(int k, int x, int y);
 };
 
 #include "b-tree.hpp"
